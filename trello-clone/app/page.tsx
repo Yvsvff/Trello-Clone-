@@ -11,9 +11,6 @@ export default function Home() {
     {/*Board */}
     <Board />
 
-    <h1>
-      Trello Clone
-    </h1>
   </main>
   )
 }
