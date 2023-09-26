@@ -1,3 +1,4 @@
+
 import Board from "@components/Board";
 import Header from "@components/Header";
 
@@ -9,6 +10,7 @@ export default function Home() {
 
     {/*Board */}
     <Board />
+
     <h1>
       Trello Clone
     </h1>
