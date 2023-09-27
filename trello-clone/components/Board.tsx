@@ -12,6 +12,11 @@ export default function Board() {
   }, [getBoard]);
 
   const handleOnDragEnd = (result: DropResult) => {
+    const {destination, source, type} = result;
+    console.log(destination);
+    console.log(source);
+    console.log(type);
+    
 
   };
 
@@ -20,7 +25,7 @@ export default function Board() {
 
     <DragDropContext onDragEnd={handleOnDragEnd}>
       <Droppable droppableId="board" direction="horizontal" type="column">
-        {(provided) =>
+        {(provided) => (
           <div
           className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-7xl mx-auto"
           {...provided.droppableProps}
@@ -37,6 +42,7 @@ export default function Board() {
 
             ))}
           </div>
+  )
         }
 
       </Droppable>
