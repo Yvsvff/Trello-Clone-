@@ -1,3 +1,4 @@
+import Modal from '@components/Modal'
 import './globals.css'
 
 
@@ -15,7 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='bg-slate-200'>{children}</body>
+      <body className='bg-slate-200'>
+        <Modal />
+        {children}
+        </body>
     </html>
   )
 }

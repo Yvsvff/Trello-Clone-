@@ -2,6 +2,7 @@ import { PlusCircleIcon } from "@heroicons/react/20/solid";
 import { Draggable, Droppable } from "react-beautiful-dnd"
 import TodoCard from "./TodoCard";
 import { useBoardStore } from "@store/BoardStore";
+import { useModalStore } from "@store/ModalStore";
 
 
 
@@ -21,6 +22,7 @@ const idToColumnText: {
 
 export default function Column({id, todos, index}: Props) {
   const [searchString] = useBoardStore((state) => [state.searchString]);
+  const openModal = useModalStore((state) => state.openModal);
 
 
   return (
@@ -79,8 +81,8 @@ export default function Column({id, todos, index}: Props) {
                   {provided.placeholder}
                   
 
-                  <div>
-                    <button className="flex items-end justify-end p-2">
+                  <div className="flex items-end justify-end p-2">
+                    <button onClick={openModal} className="text-green-500 hover:text-green-700">
                       <PlusCircleIcon
                       className="h-10 w-10"
                       />
