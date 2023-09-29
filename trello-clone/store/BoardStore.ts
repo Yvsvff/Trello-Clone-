@@ -16,6 +16,7 @@ interface BoardState{
     setNewTaskType: (columnId: TypedColumn) => void
     setImage: (image: File | null) => void;
     deleteTask: (taskIndex: number, todoId: Todo, id: TypedColumn) => void;
+    addTask: (todo: string, columnId: TypedColumn, image?: File | null) => void;
 
 }
 export const useBoardStore = create<BoardState>((set,get) => ({
@@ -38,6 +39,7 @@ export const useBoardStore = create<BoardState>((set,get) => ({
   },
   image: null,
   setBoardState: (board) => set({board}),
+  
 
   deleteTask: async (taskIndex: number, todo: Todo, id: TypedColumn) => {
 const newColumns = new Map(get().board.columns)
@@ -67,7 +69,20 @@ await databases.deleteDocument(
           title: todo.title,
           status: columnId,
         }
-      )
+      );
+  },
+  addTask: async (todo: string, columnId: TypedColumn, image?: File | null) => {
+    let file: Image | undefined;
+    
+    if(image) {
+      const fileUploaded = await uploadImage(image);
+      if (fileUploaded) {
+        file = {
+          bucketId: fileUploaded.buckedId,
+          fileId: fileUploaded.$id,
+        };
+      }
+    }
   },
  
 }))
