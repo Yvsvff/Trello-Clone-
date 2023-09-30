@@ -8,21 +8,26 @@ import { useModalStore } from "@store/ModalStore";
 
 type Props = {
     id: TypedColumn,
-    todos: Todo[],
-    index: number
+    todos: Todo[];
+    index: number;
     
 };
 
 const idToColumnText: {
   [key in TypedColumn]: string;
-} = {todos: "To Do",
+} = {todo: "To Do",
   inprogress: "In Progress",
   done: "Done",
 };
 
 export default function Column({id, todos, index}: Props) {
-  const [searchString] = useBoardStore((state) => [state.searchString]);
+  const [searchString, setNewTaskType] = useBoardStore((state) => [state.searchString, state.setNewTaskType]);
   const openModal = useModalStore((state) => state.openModal);
+  const handleAddTodo = () => {
+    setNewTaskType(id);
+    openModal();
+  }
+
 
 
   return (
@@ -82,7 +87,7 @@ export default function Column({id, todos, index}: Props) {
                   
 
                   <div className="flex items-end justify-end p-2">
-                    <button onClick={openModal} className="text-green-500 hover:text-green-700">
+                    <button onClick={handleAddTodo} className="text-green-500 hover:text-green-700">
                       <PlusCircleIcon
                       className="h-10 w-10"
                       />

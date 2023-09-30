@@ -30,7 +30,7 @@ return acc;
 
 //if columns doesnt have inprogress, todo and done, add them with empty todos
 
-const columnTypes: TypedColumn[] = ["todos", "inprogress", "done"];
+const columnTypes: TypedColumn[] = ["todo", "inprogress", "done"];
 for (const columnType of columnTypes){
     if (!columns.get(columnType)) {
         columns.set(columnType, {

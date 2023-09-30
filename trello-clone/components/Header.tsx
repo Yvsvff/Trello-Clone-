@@ -8,7 +8,8 @@ import { useBoardStore } from "@store/BoardStore";
 
 export default function Header() {
 
-    const [searchString, setSearchString] = useBoardStore((state) => [
+    const [board,searchString, setSearchString] = useBoardStore((state) => [
+        state.board,
         state.searchString,
         state.setSearchString,
     ]);
