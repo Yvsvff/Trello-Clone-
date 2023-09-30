@@ -72,6 +72,7 @@ await databases.deleteDocument(
         }
       );
   },
+  
   addTask: async (todo: string, columnId: TypedColumn, image?: File | null) => {
     let file: Image | undefined;
     
